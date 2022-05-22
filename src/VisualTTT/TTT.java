@@ -20,8 +20,8 @@ public class TTT {
 			System.out.println(" ");
 		}
 	}
-	Player choosePlayer (JButton bFinishMove,Player[] plArray) {
-		if (!plArray[0].isMoved){
+	public Player choosePlayer (JButton bFinishMove,Player[] plArray) {
+		if (!plArray[0].isMoved()){
 			bFinishMove.setIcon(plArray[1].getImage());
 			return plArray[0];	
 		}else {
@@ -43,12 +43,8 @@ public class TTT {
 			boolean gWin = true;
 			boolean vWin = true;
 			for (int y = 0; y < 3; y++) {
-				if( !map[x][y].equals(activePlayer.getFigure())) {
-					gWin = false;
-				}
-				if (!map[y][x].equals(activePlayer.getFigure())){
-					vWin = false;
-				}
+				if( !map[x][y].equals(activePlayer.getFigure())) { gWin = false; }
+				if (!map[y][x].equals(activePlayer.getFigure())){ vWin = false; }
 			}
 			win = gWin || vWin;
 			if (win)  return win; 
@@ -67,20 +63,18 @@ public class TTT {
 		return map;
 	}
 
-	static Image getImageO(){
+	public static Image getImageO(){
 		Path p = Paths.get("src\\images\\O.png");
-		System.out.println(p.toAbsolutePath());
-		 try {
-				return ImageIO.read(new File(p.toAbsolutePath().toString()));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			return ImageIO.read(new File(p.toAbsolutePath().toString()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	 }
-	 static Image getImageX() {
+	public  static Image getImageX() {
 		 Path p = Paths.get("src\\images\\X.png");
-		 System.out.println(p.toAbsolutePath());
 		 try {
 			return ImageIO.read(new File(p.toAbsolutePath().toString()));
 		} catch (IOException e) {

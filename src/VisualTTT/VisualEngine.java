@@ -23,9 +23,9 @@ public class VisualEngine implements ActionListener {
 		ttt.clearMap();
 	}
 	public void winMethod(Player activePlayer) {
-		int a = JOptionPane.showConfirmDialog(null,activePlayer.getName()+ " Won. NextRound?", "Just Title",JOptionPane.YES_NO_OPTION);
+		int answer = JOptionPane.showConfirmDialog(null,activePlayer.getName()+ " Won. NextRound?", "Just Title",JOptionPane.YES_NO_OPTION);
 		activePlayer.addCount();
-		if ( a ==  0) { clearGame(); }
+		if ( answer == 0) { clearGame(); }
 		else {
 			JOptionPane.showInternalMessageDialog(null, "Your place will be blocked , to unblock it -> clear", "Warning", JOptionPane.INFORMATION_MESSAGE);
 			for (JButton[] ar : parent.getButtonList()) {
@@ -36,13 +36,13 @@ public class VisualEngine implements ActionListener {
 				parent.bFinishMove.setIcon(null);
 			}
 	}
-	public Player[] getPlayers() { return plArray;}
+	public Player[] getPlayers() { return plArray; }
 	public void actionPerformed(ActionEvent e) {
 		JButton clickedButton = (JButton)e.getSource();
 		Player activePlayer = ttt.choosePlayer(parent.bFinishMove,plArray);
-		plArray[0].isMoved=false;
-		plArray[1].isMoved=false;
-		activePlayer.isMoved = true;
+		plArray[0].setMoved(false);
+		plArray[1].setMoved(false);
+		activePlayer.setMoved(true);
 		for (int x = 0; x < parent.getButtonList().length; x++) {
 			for (int y = 0; y < parent.getButtonList()[x].length; y++) {
 				if (clickedButton != parent.getButtonList()[x][y])  continue; 

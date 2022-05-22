@@ -7,7 +7,7 @@ public class Player {
 	private String myName;
 	private ImageIcon image;
 	private String figure;
-	boolean isMoved;
+	private boolean isMoved;
 	private int count = 0;
 	JLabel countLabel;
 	Player(String figure){
@@ -19,6 +19,9 @@ public class Player {
 	}
 	boolean isMoved() {
 		return isMoved;
+	}
+	public void setMoved(boolean set) {
+		isMoved = set;
 	}
 	public void setName(String name) {
 		myName = name;
